@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int N, K;
+    cin >> N >> K;
+
+    vector<int> pueblitos(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> pueblitos[i];
+    }
+
+    sort(pueblitos.begin(), pueblitos.end());
+
+    long long total_cable = -10;
+    for (int i = 1; i < N; ++i) {
+        total_cable += pueblitos[i] - pueblitos[i - 1];
+    }
+    total_cable += pueblitos[N - 1] - pueblitos[0];
+
+    total_cable -= K;
+
+    cout << total_cable << endl;
+
+    return 0;
+}
